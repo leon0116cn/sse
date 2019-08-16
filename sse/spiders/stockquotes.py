@@ -21,12 +21,11 @@ class StockquotesSpider(scrapy.Spider):
 
     def parse(self, response):
         self.log('url = {0}'.format(response.url), logging.INFO)
-        resp_data = json.loads(response.text)
-        quote_item = StockQuoteItem()
-        for items in resp_data.get('list')[0]:
-            for index, item in enumerate(self.stock_keys):
-                quote_item[item] = items[index]
-        quote_item['query_date'] = resp_data.get('date')
-        quote_item['query_time'] = resp_data.get('time')
-        yield quote_item
+        data = json.loads(response.text)
+        for quotes in data.get('list'):
+            quote_item = StockQuoteItem()
+            quote_item.update(dict(zip(self.stock_keys, quotes)))
+            quote_item['query_date'] = data.get('date')
+            quote_item['query_time'] = data.get('time')
+            yield quote_item
 
