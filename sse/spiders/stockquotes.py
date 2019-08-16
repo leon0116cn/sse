@@ -1,11 +1,13 @@
 import scrapy, logging, json
 from scrapy.http import Request
-from sse.items import StockQuotesItem
+from sse.items import StockQuoteItem
 
 
 class StockquotesSpider(scrapy.Spider):
     name = 'stockquotes'
     allowed_domains = ['http://yunhq.sse.com.cn']
+    stock_keys = ['stock_code', 'stock_short', 'open_price', 'high_price', 'low_price', 'last_price', 'prev_price',
+                  'change_per', 'turnover', 'volume', 'ext1', 'change', 'range_price', 'stock_type', 'ext2']
 
     def start_requests(self):
         offset = 50
@@ -19,5 +21,12 @@ class StockquotesSpider(scrapy.Spider):
 
     def parse(self, response):
         self.log('url = {0}'.format(response.url), logging.INFO)
-        yield json.loads(response.text)
+        resp_data = json.loads(response.text)
+        quote_item = StockQuoteItem()
+        for items in resp_data.get('list')[0]:
+            for index, item in enumerate(self.stock_keys):
+                quote_item[item] = items[index]
+        quote_item['query_date'] = resp_data.get('date')
+        quote_item['query_time'] = resp_data.get('time')
+        yield quote_item
 

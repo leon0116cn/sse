@@ -1,7 +1,7 @@
 import scrapy
 
 
-class StockQuotesItem(scrapy.Item):
+class StockQuoteItem(scrapy.Item):
     stock_code = scrapy.Field()
     stock_short = scrapy.Field()
     stock_type = scrapy.Field()
@@ -18,4 +18,4 @@ class StockQuotesItem(scrapy.Item):
     ext1 = scrapy.Field()
     ext2 = scrapy.Field()
     query_date = scrapy.Field()
-    query_time = scrapy()
+    query_time = scrapy.Field()
