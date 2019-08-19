@@ -1,5 +1,4 @@
 import json
-import logging
 import scrapy
 from scrapy.http import Request
 from sse.items import StockQuoteItem
@@ -8,8 +7,8 @@ from sse.items import StockQuoteItem
 class StockquotesSpider(scrapy.Spider):
     name = 'stockquotes'
     allowed_domains = ['http://yunhq.sse.com.cn']
-    stock_keys = ['stock_code', 'stock_short', 'open_price', 'high_price', 'low_price', 'last_price', 'prev_price',
-                  'change_per', 'turnover', 'volume', 'ext1', 'change', 'range_price', 'stock_type', 'ext2']
+    stock_keys = ['stock_code', 'stock_name', 'open_price', 'high_price', 'low_price', 'last_price', 'prev_price',
+                  'chg_rate', 'volume', 'amount', 'trade_phase', 'change', 'amp_rate', 'cpxxsubtype', 'cpxxprodusta']
 
     def start_requests(self):
         offset = 50
@@ -22,12 +21,12 @@ class StockquotesSpider(scrapy.Spider):
             yield Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        self.log('url = {0}'.format(response.url), logging.INFO)
         data = json.loads(response.text)
         for quotes in data.get('list'):
             quote_item = StockQuoteItem()
             quote_item.update(dict(zip(self.stock_keys, quotes)))
-            quote_item['query_date'] = data.get('date')
-            quote_item['query_time'] = data.get('time')
+            quote_item['trade_date'] = data.get('date')
+            quote_item['trade_time'] = data.get('time')
+            quote_item['stock_total'] = data.get('total')
             yield quote_item
 
