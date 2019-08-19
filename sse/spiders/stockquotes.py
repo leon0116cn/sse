@@ -1,4 +1,6 @@
-import scrapy, logging, json
+import json
+import logging
+import scrapy
 from scrapy.http import Request
 from sse.items import StockQuoteItem
 
