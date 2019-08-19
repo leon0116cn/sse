@@ -8,7 +8,7 @@ class StockquotesSpider(scrapy.Spider):
     name = 'stockquotes'
     allowed_domains = ['http://yunhq.sse.com.cn']
     stock_keys = ['stock_code', 'stock_name', 'open_price', 'high_price', 'low_price', 'last_price', 'prev_price',
-                  'chg_rate', 'volume', 'amount', 'trade_phase', 'change', 'amp_rate', 'cpxxsubtype', 'cpxxprodusta']
+                  'chg_rate', 'volume', 'amount', 'trade_phase', 'chg_price', 'amp_rate', 'cpxxsubtype', 'cpxxprodusta']
 
     def start_requests(self):
         offset = 50

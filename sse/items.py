@@ -13,7 +13,7 @@ class StockQuoteItem(scrapy.Item):
     volume = scrapy.Field()
     amount = scrapy.Field()
     trade_phase = scrapy.Field()
-    change = scrapy.Field()
+    chg_price = scrapy.Field()
     amp_rate = scrapy.Field()
     cpxxsubtype = scrapy.Field()
     cpxxprodusta = scrapy.Field()
