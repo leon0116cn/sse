@@ -4,6 +4,7 @@ import logging
 
 class MySQLPipeline(object):
     def __init__(self, db_config):
+        self.logger = logging.getLogger(__name__)
         self.db_config = db_config
         self.cnx = None
         self.cursor = None
@@ -20,8 +21,12 @@ class MySQLPipeline(object):
         return cls(db_config)
 
     def open_spider(self, spider):
-        self.cnx = mysql.connector.connect(**self.db_config)
-        self.cursor = self.cnx.cursor()
+        try:
+            self.cnx = mysql.connector.connect(**self.db_config)
+            self.cursor = self.cnx.cursor()
+        except mysql.connector.Error as err:
+            self.logger.error('MySQL DB CONNECTION ERROR!')
+            self.logger.error(err)
 
     def close_spider(self, spider):
         self.cursor.close()
@@ -33,12 +38,10 @@ class MySQLPipeline(object):
                      'volume, amount, trade_phase, chg_price, amp_rate, cpxxsubtype, cpxxprodusta, stock_total, '\
                      'trade_date, trade_time) '\
                      'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-
         self.cursor.execute(add_quotes, (item['stock_code'], item['stock_name'], item['open_price'], item['high_price'],
                                          item['low_price'], item['last_price'], item['prev_price'], item['chg_rate'],
                                          item['volume'], item['amount'], item['trade_phase'], item['chg_price'],
                                          item['amp_rate'], item['cpxxsubtype'], item['cpxxprodusta'],
                                          item['stock_total'], item['trade_date'], item['trade_time']))
-
         self.cnx.commit()
         return item
