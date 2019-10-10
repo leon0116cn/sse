@@ -1,0 +1,68 @@
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NZX010&ADiv_Cd=310000&Kywd_List_Cntnt=&Enqr_MtdCd=3&PAGE=2
+
+CCB_IBSVersion: V5
+SERVLET_NAME: WCCMainPlatV5
+isAjaxRequest: true
+TXCODE: NZX010
+ADiv_Cd: 310000
+Kywd_List_Cntnt: 
+Enqr_MtdCd: 3
+PAGE: 2
+
+1：363
+2：326
+3：1295
+4：1984
+
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NAREA1&type=2&areacode=310000
+CCB_IBSVersion: V5
+SERVLET_NAME: WCCMainPlatV5
+isAjaxRequest: true
+TXCODE: NAREA1
+type: 2
+areacode: 310000
+
+start_url = 'http://www.ccb.com/cn/home/map/branchSearch.html'
+div = response.css('.pro_city3_list1')
+id = div.xpath('.//a/@id').getall()
+name = div.xpath('.//a/@name').getall()
+
+获取省市列表：
+['340000', '110000', '500000', '350000', '620000', '440000', '450000', '520000', '460000', '130000', '410000', '230000', '420000', '430000', '220000', '320000', '360000', '210000', '150000', '640000', '630000', '370000', '610000', '140000', '310000', '510000', '120000', '650000', '540000', '530000', '330000']
+
+['安徽省', '北京市', '重庆市', '福建省', '甘肃省', '广东省', '广西区', '贵州省', '海南省', '河北省', '河南省', '黑龙江', '湖北省', '湖南省', '吉林省', '江苏省', '江西省', '辽宁省', '内蒙古', '宁夏区', '青海省', '山东省', '陕西省', '山西省', '上海市', '四川省', '天津市', '新疆区', '西藏区', '云南省', '浙江省']
+
+获取城市列表
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NAREA1&type=2&areacode=310000
+{ "totalnum":"1", "arealist":[ { "areacode":"310000", "NET_NAME":"上海市" }, {}] }
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NAREA1&type=3&areacode=310000
+
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NAREA1&type=2&areacode=340000
+{ "totalnum":"16", "arealist":[ { "areacode":"340100", "NET_NAME":"合肥市" }, { "areacode":"340200", "NET_NAME":"芜湖市" }, { "areacode":"340300", "NET_NAME":"蚌埠市" }, { "areacode":"340400", "NET_NAME":"淮南市" }, { "areacode":"340500", "NET_NAME":"马鞍山市" }, { "areacode":"340600", "NET_NAME":"淮北市" }, { "areacode":"340700", "NET_NAME":"铜陵市" }, { "areacode":"340800", "NET_NAME":"安庆市" }, { "areacode":"341000", "NET_NAME":"黄山市" }, { "areacode":"341100", "NET_NAME":"滁州市" }, { "areacode":"341200", "NET_NAME":"阜阳市" }, { "areacode":"341300", "NET_NAME":"宿州市" }, { "areacode":"341500", "NET_NAME":"六安市" }, { "areacode":"341600", "NET_NAME":"亳州市" }, { "areacode":"341700", "NET_NAME":"池州市" }, { "areacode":"341800", "NET_NAME":"宣城市" }, {}] }
+
+
+获取直辖市
+div0.xpath(".//a[@class='off']/text()").getall()
+获取非直辖市
+div0.xpath(".//a[not(@class)]/text()").getall()
+
+
+获取城市ATM数据
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NZX010&ADiv_Cd=310000&Kywd_List_Cntnt=&Enqr_MtdCd=3&PAGE=2
+{ "TOTAL_PAGE":"130", "TOTAL_REC":"1295", "CURR_TOTAL_PAGE":"2", "CURR_TOTAL_REC":"10", "STS_TRACE_ID":"", "SLFEQMT_DTL_LIST": [ { "Enqr_MtdCd":"3", "SSEq_ID":"310774000220", "MtIt_ID":"310774000", "MtIt_Nm":"上海曹安路支行", "Dtl_Adr":"北石路368号", "Fix_TelNo":"86-021-52501593", "Lgt":"121.396745062436", "Ltt":"31.2485047742768", "Dstn_Len":"1.2962914E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310774000222", "MtIt_ID":"310774000", "MtIt_Nm":"上海曹安路支行", "Dtl_Adr":"北石路368号", "Fix_TelNo":"86-021-52501593", "Lgt":"121.396745062436", "Ltt":"31.2485047742768", "Dstn_Len":"1.2962914E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"235959" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310774000001", "MtIt_ID":"310774000", "MtIt_Nm":"上海曹安路支行", "Dtl_Adr":"北石路368号", "Fix_TelNo":"86-021-52501593", "Lgt":"121.396745062436", "Ltt":"31.2485047742768", "Dstn_Len":"1.2962914E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"1", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310774000221", "MtIt_ID":"310774000", "MtIt_Nm":"上海曹安路支行", "Dtl_Adr":"北石路368号", "Fix_TelNo":"86-021-52501593", "Lgt":"121.396745062436", "Ltt":"31.2485047742768", "Dstn_Len":"1.2962914E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"235959" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310774000003", "MtIt_ID":"310774000", "MtIt_Nm":"上海曹安路支行", "Dtl_Adr":"北石路368号", "Fix_TelNo":"86-021-52501593", "Lgt":"121.396745062436", "Ltt":"31.2485047742768", "Dstn_Len":"1.2962914E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"1", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310774000002", "MtIt_ID":"310774000", "MtIt_Nm":"上海曹安路支行", "Dtl_Adr":"北石路368号", "Fix_TelNo":"86-021-52501593", "Lgt":"121.396745062436", "Ltt":"31.2485047742768", "Dstn_Len":"1.2962914E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"1", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310734700220", "MtIt_ID":"310734700", "MtIt_Nm":"上海常熟路支行", "Dtl_Adr":"上海市徐汇区长乐路989号一夹层", "Fix_TelNo":"86-021-54075741", "Lgt":"121.446670464471", "Ltt":"31.2156429036979", "Dstn_Len":"1.2968549E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"16", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310734100220", "MtIt_ID":"310734100", "MtIt_Nm":"上海大木桥路支行", "Dtl_Adr":"上海市徐汇区大木桥路588号1幢102室、103室", "Fix_TelNo":"86-021-54962295", "Lgt":"121.462826063773", "Ltt":"31.1952460395739", "Dstn_Len":"1.2970701E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310773636221", "MtIt_ID":"310773636", "MtIt_Nm":"上海兰溪路支行", "Dtl_Adr":"兰溪路137号", "Fix_TelNo":"86-021-52661923", "Lgt":"121.405218641128", "Ltt":"31.2393817816448", "Dstn_Len":"1.2963989E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"16", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"0" }, { "Enqr_MtdCd":"3", "SSEq_ID":"310773636223", "MtIt_ID":"310773636", "MtIt_Nm":"上海兰溪路支行", "Dtl_Adr":"兰溪路137号", "Fix_TelNo":"86-021-52661923", "Lgt":"121.405218641128", "Ltt":"31.2393817816448", "Dstn_Len":"1.2963989E7", "OffInBnk_Ind":"2", "SSEq_Phys_Instl_MtdCd":"17", "Eqmt_Tp_Nm":"4", "Eqmt_PwrOn_Tm":"00:00:00", "Eqmt_PwrOff_Tm":"23:59:59", "Rule_Eqmt_Oprt_Tm_Val":"235959" }, {} ] }
+
+http://www.ccb.com/tran/WCCMainPlatV5?CCB_IBSVersion=V5&SERVLET_NAME=WCCMainPlatV5&isAjaxRequest=true&TXCODE=NZX010&ADiv_Cd=340000&Kywd_List_Cntnt=&Enqr_MtdCd=3&PAGE=2
+
+
+
+
+申报材料已退回
+  备注意见：
+  1.补全基本信息下的单位代码；（已改）
+  2.工作经历-聘任表下二处日期填写为盖章日期即当今日期；（已改） 
+  3.项目情况-认证验收级别不能填写“其他”,请选择合适选项； （已改）
+  4.论文-论文为技术总结，需要2个高工推荐，并附高工证书加盖公章； （已改）
+  5.相关表格-推荐表完整填写后上传；（已改）承诺书勾选第四条本人身份并在签字处手签；（已改）
+  6.单位意见-补齐最后二个日期填写；（已改） 7.附件资料-1）序号2推荐表、序号1承诺书无需在此处列出，请移至“相关表格”页下替代原附件一和附件二；（已改）2）序号3聘任表稍有修改与“工作经历”页内容相同；（已改）3）公需学时证明、专项学时证明均需加盖公章；（已改）
+在左栏菜单栏中选择【上报材料】栏目，点击【我要修改信息】按钮后即可进行信息的修改。
+
